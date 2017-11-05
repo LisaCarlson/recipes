@@ -11,7 +11,8 @@ router.get('/', function(req, res, next) {
 
 router.post('/login', function(req, res, next) {
   return Users.findOne({email: req.body.email, password: req.body.password}).then(function(user) {
-    req.session.username = user.username;
+    req.session.id = user._id;
+    req.session.recipes = user.recipes;
     res.json(user);
   });
 });

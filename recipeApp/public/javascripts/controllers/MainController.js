@@ -8,17 +8,17 @@ app.controller('MainController', ['$scope', '$location', 'Recipes', function($sc
   // error(function(data, status, headers, config) {
   //   $scope.name = 'Error!'
   // });
-  
-  $scope.currentUser = null;
    
   $scope.setCurrentUser = function (user) {
-    $scope.currentUser = user.username;
-    // $scope.recipes = user.recipes;
     $location.path('/recipes/show')
-    Recipes.getRecipes(user._id).then(function(data) {
-      $scope.recipes = data.data;
-      console.log($scope.recipes)
-    })
-    // console.log(user)
+    $scope.currentUser = user.username;
+    $scope.id = user._id;    
   };
+
+  $scope.getRecipes = function() {
+    return Recipes.getRecipes($scope.id).then(function(data) {
+      $scope.recipes = data.data; 
+    })
+  }
+
 }])

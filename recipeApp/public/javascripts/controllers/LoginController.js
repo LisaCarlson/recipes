@@ -17,6 +17,7 @@ app.controller('LoginController', ['$scope', '$rootScope', 'AuthService', 'AUTH_
     AuthService.login(credentials).then(function(user) {
       $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
       $scope.setCurrentUser(user);
+      $scope.getRecipes();
     }, function() {
       $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
     })

@@ -19,13 +19,14 @@ block content
           a(href='/users/logout') Log Out
   .container.recipeContainer
     .recipeList
-      h3.text-center.text-danger hello {{ username }}
+      h3.text-center.text-danger hello {{ currentUser }}
       form.navbar-form.navbar-left(role='search')
         .form-group
           input.form-control(ng-model='search', type='text', placeholder='Search')
-      .row.margin-top.recipes(ng-repeat='recipe in recipes | filter: search')
-        .col-md-12
-          .row
-            .recipe
-              h3.text-primary {{recipe.title}}
+      .recipe(ng-repeat='recipe in recipes | filter: search')
+        h3 {{ recipe.name }}
+        .ingredients(ng-repeat='ingredient in recipe.ingredients')
+          p {{ ingredient }}
+        .directions
+          p.text-primary {{ recipe.directions }}
     .recipeDetail
