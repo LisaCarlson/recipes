@@ -10,16 +10,10 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-  var data = {};
   return Users.findOne({email: req.body.email, password: req.body.password}).then(function(user) {
-    data.username = user.username;
-    return user.recipes;
-  }).then(function(recipeIds) {
-    return Recipes.find({_id: {$in: recipeIds}})
-  }).then(function(recipes) {
-    data.recipes = recipes;
-    res.json(data);
-  })
+    req.session.username = user.username;
+    res.json(user);
+  });
 });
 
 router.get('/logout', function(req, res, next) {
