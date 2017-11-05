@@ -1,5 +1,11 @@
-app.controller('MainController', ['$scope', '$http', function($scope, $http) {
-  $http.get('/recipes/show').then(function(response) {
-    $scope.recipes = response.data;
-  })
+
+app.controller('MainController', ['$scope', '$location', function($scope, $location) {
+  
+  $scope.currentUser = null;
+   
+  $scope.setCurrentUser = function (user) {
+    $scope.currentUser = user.username;
+    $scope.recipes = user.recipes;
+    $location.path('/recipes/show')
+  };
 }])
