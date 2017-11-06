@@ -5,5 +5,10 @@ app.factory('AuthService', function($http) {
       return res.data;
     })
   }
+  authService.signup = function(credentials) {
+    return $http.post('users/signup', credentials).then(function(res) {
+      return res.data;
+    });
+  }
   return authService;
 })

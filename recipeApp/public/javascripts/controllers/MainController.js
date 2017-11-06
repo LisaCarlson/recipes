@@ -10,7 +10,7 @@ app.controller('MainController', ['$scope', '$location', 'Recipes', function($sc
   // });
    
   $scope.setCurrentUser = function (user) {
-    $location.path('/recipes/show')
+    $location.path('/recipes')
     $scope.currentUser = user.username;
     $scope.id = user._id;    
   };

@@ -8,11 +8,6 @@ app.constant('AUTH_EVENTS', {
 })
 
 app.controller('LoginController', ['$scope', '$rootScope', 'AuthService', 'AUTH_EVENTS', function($scope, $rootScope, AuthService, AUTH_EVENTS) {
-  $scope.credentials = {
-    username: '',
-    email: '',
-    password: ''
-  };
   $scope.login = function(credentials) {
     AuthService.login(credentials).then(function(user) {
       if (user.errors) {

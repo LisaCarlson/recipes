@@ -1,12 +1,11 @@
 .container
   .page-header 
-    h1 My Recipes  
-      small.text-warning log in to manage your recipes
+    h1 Sign Up  
   .row
     .col-md-6.col-md-offset-3
       .errors.alert.alert-danger(role="alert" ng-repeat='error in errors')
         p.text-danger {{ error }}
-      form.form-group(name="loginForm" ng-submit="login(credentials)" novalidate)
+      form.form-group(name="signupForm" ng-submit="signup(credentials)" novalidate)
         label(for='username')
           i(class='glyphicon glyphicon-user')
           strong   User
@@ -19,5 +18,4 @@
           i(class="fa fa-unlock-alt")
           strong   Password
         input.form-control(type='password' name='password' id='password' ng-model="credentials.password")
-        button(type='submit' class='btn btn-warning') Log In
-        a(href="/signup" class='btn btn-primary') Sign Up
+        button(type='submit' class='btn btn-success') Sign Up
