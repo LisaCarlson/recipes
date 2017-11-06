@@ -14,19 +14,28 @@ block content
         li
           h4.navbar-text 
             i(class='glyphicon glyphicon-user')  
-              span.user User
+              span.user {{ currentUser }}
         li
           a(href='/users/logout') Log Out
   .container.recipeContainer
     .recipeList
-      h3.text-center.text-danger hello {{ currentUser }}
+      h3.text-center.text-danger Your Recipes
       form.navbar-form.navbar-left(role='search')
         .form-group
+          label
+            i.glyphicon.glyphicon-search
           input.form-control(ng-model='search', type='text', placeholder='Search')
+          a.btn.btn-success.add-btn(href="/recipes/add")
+            i.glyphicon.glyphicon-plus
+            | Add Recipe
       .recipe(ng-repeat='recipe in recipes | filter: search')
         h3 {{ recipe.name }}
+        .recipeImg
+          img(ng-src="{{recipe.img}}")
+        h4 Ingredients
         .ingredients(ng-repeat='ingredient in recipe.ingredients')
           p {{ ingredient }}
         .directions
+          h4 Directions
           p.text-primary {{ recipe.directions }}
     .recipeDetail

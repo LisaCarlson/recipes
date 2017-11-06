@@ -9,6 +9,14 @@
   flex-flow: column nowrap;
 }
 
-.btn {
+.login-btn {
   margin: 20px 20px 0 0;
+}
+
+.add-btn {
+  margin-left: 20px;
+}
+
+.recipeImg img {
+  max-width: 300px;
 }
