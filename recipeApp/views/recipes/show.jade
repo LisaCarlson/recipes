@@ -25,7 +25,7 @@ block content
           label
             i.glyphicon.glyphicon-search
           input.form-control(ng-model='search', type='text', placeholder='Search')
-          button.btn.btn-success.add-btn(ng-click="addForm = !addForm")
+          button.btn.btn-success.margin-left(ng-click="addForm = !addForm")
             i.glyphicon.glyphicon-plus
             | Add Recipe
       form.addForm(name="addForm" ng-submit="addRecipe(recipe)" ng-show="!addForm")
@@ -40,6 +40,8 @@ block content
         button.btn.btn-primary(type="submit") Save
       .recipe(ng-repeat='recipe in recipes | filter: search')
         h3 {{ recipe.name }}
+          button.btn.btn-danger.margin-left(ng-click="deleteRecipe(recipe._id)")
+            i.glyphicon.glyphicon-trash
         .recipeImg
           img(ng-src="{{recipe.img}}")
         h4 Ingredients

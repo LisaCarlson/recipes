@@ -34,4 +34,12 @@ router.post('/', function(req, res, next) {
   });
 });
 
+router.delete('/:id', function(req, res, next) {
+  Recipes.remove({_id: req.params.id}).then(function(result) {
+    Recipes.find({}).then(function(recipes) {
+      res.json(recipes);
+    })
+  })
+})
+
 module.exports = router;

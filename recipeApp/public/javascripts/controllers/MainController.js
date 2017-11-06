@@ -30,4 +30,10 @@ app.controller('MainController', ['$scope', '$location', 'Recipes', function($sc
     });
   }
 
+  $scope.deleteRecipe = function(recipeId) {
+    Recipes.deleteRecipe(recipeId).then(function(data) {
+      $scope.recipes = data.data;
+    })
+  }
+
 }])

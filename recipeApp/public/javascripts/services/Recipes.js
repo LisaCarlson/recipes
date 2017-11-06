@@ -15,5 +15,12 @@ app.factory('Recipes', function($http) {
       return err;
     })
   }
+  Recipes.deleteRecipe = function(recipeId) {
+    return $http.delete('/recipes/'+recipeId).then(function(data) {
+      return data;
+    }, function(err) {
+      return err;
+    })
+  }
   return Recipes;
 });
