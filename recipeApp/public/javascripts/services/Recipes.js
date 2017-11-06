@@ -7,5 +7,13 @@ app.factory('Recipes', function($http) {
       return err;
     });
   }
+  Recipes.addRecipe = function(recipe) {
+    recipe.ingredients = recipe.ingredients.split(',');
+    return $http.post('/recipes', recipe).then(function(data) {
+      return data;
+    }, function(err) {
+      return err;
+    })
+  }
   return Recipes;
 });

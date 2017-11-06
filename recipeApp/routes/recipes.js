@@ -19,4 +19,19 @@ router.get('/id/:id', function(req, res, next) {
   });
 });
 
+router.post('/', function(req, res, next) {
+  Recipes.insert(req.body).then(function(doc) {
+    return doc;
+  }).then(function(data) {
+    var recipeId = data._id;
+    Users.update({_id: data.userId}, {$push: {recipes: recipeId}}).then(function(result) {
+      return result;
+    }).then(function() {
+      Recipes.find({}).then(function(recipes) {
+        res.json(recipes)
+      });
+    })
+  });
+});
+
 module.exports = router;

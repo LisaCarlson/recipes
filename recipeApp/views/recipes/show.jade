@@ -25,9 +25,19 @@ block content
           label
             i.glyphicon.glyphicon-search
           input.form-control(ng-model='search', type='text', placeholder='Search')
-          a.btn.btn-success.add-btn(href="/recipes/add")
+          button.btn.btn-success.add-btn(ng-click="addForm = !addForm")
             i.glyphicon.glyphicon-plus
             | Add Recipe
+      form.addForm(name="addForm" ng-submit="addRecipe(recipe)" ng-show="!addForm")
+        label Recipe Name
+        input.form-control(type='text' ng-model="recipe.name")
+        label Recipe Image
+        input.form-control(type='text' ng-model="recipe.img")
+        label Ingredients
+        input.form-control(type='text' ng-model="recipe.ingredients" placeholder="separate by comma")
+        label Directions
+        input.form-control(type='text' ng-model="recipe.directions")
+        button.btn.btn-primary(type="submit") Save
       .recipe(ng-repeat='recipe in recipes | filter: search')
         h3 {{ recipe.name }}
         .recipeImg

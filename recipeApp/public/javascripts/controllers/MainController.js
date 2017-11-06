@@ -9,7 +9,7 @@ app.controller('MainController', ['$scope', '$location', 'Recipes', function($sc
   //   $scope.name = 'Error!'
   // });
    
-  $scope.setCurrentUser = function (user) {
+  $scope.setCurrentUser = function(user) {
     $location.path('/recipes')
     $scope.currentUser = user.username;
     $scope.id = user._id;    
@@ -19,6 +19,15 @@ app.controller('MainController', ['$scope', '$location', 'Recipes', function($sc
     return Recipes.getRecipes($scope.id).then(function(data) {
       $scope.recipes = data.data; 
     })
+  }
+
+  $scope.addRecipe = function(recipe) {
+    recipe.userId = $scope.id;
+    Recipes.addRecipe(recipe).then(function(data) {
+      $scope.recipes = data.data;
+      $scope.recipe = {};
+      $scope.addForm = addForm;
+    });
   }
 
 }])
