@@ -17,8 +17,9 @@ app.controller('MainController', ['$scope', '$location', 'Recipes', function($sc
 
   $scope.getRecipes = function() {
     return Recipes.getRecipes($scope.id).then(function(data) {
-      $scope.recipes = data.data; 
-    })
+      $scope.recipes = data.data;
+      $scope.currentRecipe = data.data[0] 
+    });
   }
 
   $scope.addRecipe = function(recipe) {
@@ -33,7 +34,13 @@ app.controller('MainController', ['$scope', '$location', 'Recipes', function($sc
   $scope.deleteRecipe = function(recipeId) {
     Recipes.deleteRecipe(recipeId).then(function(data) {
       $scope.recipes = data.data;
-    })
+    });
+  }
+
+  $scope.recipeDetail = function(recipeId) {
+    Recipes.getDetail(recipeId).then(function(data) {
+      $scope.currentRecipe = data.data;
+    });
   }
 
 }])

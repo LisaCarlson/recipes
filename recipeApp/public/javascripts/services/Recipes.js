@@ -22,5 +22,12 @@ app.factory('Recipes', function($http) {
       return err;
     })
   }
+  Recipes.getDetail = function(recipeId) {
+    return $http.get('/recipes/detail/'+recipeId).then(function(data) {
+      return data;
+    }, function(err) {
+      return err;
+    })
+  }
   return Recipes;
 });

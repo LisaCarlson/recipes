@@ -7,6 +7,8 @@
   width: 30%;
   display: flex;
   flex-flow: column nowrap;
+  border-right: 1px solid #d3d3d3;
+  padding-right: 20px;
 }
 
 .login-btn {
@@ -19,4 +21,15 @@
 
 .recipeImg img {
   max-width: 300px;
+}
+
+.recipeDetail {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 70%;
+}
+
+.recipe-wrapper {
+  cursor: pointer;
 }

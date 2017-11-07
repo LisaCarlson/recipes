@@ -39,15 +39,16 @@ block content
         input.form-control(type='text' ng-model="recipe.directions")
         button.btn.btn-primary(type="submit") Save
       .recipe(ng-repeat='recipe in recipes | filter: search')
-        h3 {{ recipe.name }}
-          button.btn.btn-danger.margin-left(ng-click="deleteRecipe(recipe._id)")
-            i.glyphicon.glyphicon-trash
-        .recipeImg
-          img(ng-src="{{recipe.img}}")
-        h4 Ingredients
-        .ingredients(ng-repeat='ingredient in recipe.ingredients')
-          p {{ ingredient }}
-        .directions
-          h4 Directions
-          p.text-primary {{ recipe.directions }}
+        .recipe-wrapper(ng-click="recipeDetail(recipe._id)")
+          h3 {{ recipe.name }}
+            button.btn.btn-danger.margin-left(ng-click="deleteRecipe(recipe._id)")
+              i.glyphicon.glyphicon-trash
+          .recipeImg
+            img(ng-src="{{recipe.img}}")
     .recipeDetail
+      h3 Recipe Info
+      h4 {{ currentRecipe.name }}
+      .ingredients(ng-repeat="ingredient in currentRecipe.ingredients")
+        p {{ ingredient }}
+      p.directions.text-primary {{ currentRecipe.directions }}
+

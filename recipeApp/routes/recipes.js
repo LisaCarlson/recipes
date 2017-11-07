@@ -19,6 +19,12 @@ router.get('/id/:id', function(req, res, next) {
   });
 });
 
+router.get('/detail/:id', function(req, res, next) {
+  Recipes.findOne({_id: req.params.id}).then(function(recipe) {
+    res.json(recipe)
+  });
+});
+
 router.post('/', function(req, res, next) {
   Recipes.insert(req.body).then(function(doc) {
     return doc;
